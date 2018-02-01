@@ -45,11 +45,6 @@ class Conductor: AKMIDIListener {
             AKLog("Could not set session category.")
         }
         
-        // EXS24 sampler options are:
-        // TX Brass
-        // TX LoTine81z
-        // TX Metalimba
-        // TX Pluck Bass
         demoSampler.loadEXS24Sample(filePath: "TX Metalimba")
         
         // If you wish to load a wav file, comment the `loadEXS24` method and uncomment this one:

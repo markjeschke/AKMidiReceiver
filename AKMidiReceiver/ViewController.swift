@@ -47,7 +47,6 @@ class ViewController: UIViewController {
             self.view.backgroundColor = UIColor.lightGray
             if midiTypeReceived != .noteNumber {
                 dismissFlashBackgroundColor()
-                conductor.midiSignalReceived = false
             }
         } else {
             dismissFlashBackgroundColor()
@@ -55,9 +54,11 @@ class ViewController: UIViewController {
     }
     
     @objc func dismissFlashBackgroundColor() {
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.5, animations: {
             self.outputTextLabel.backgroundColor = UIColor.clear
             self.view.backgroundColor = UIColor.white
+        }) { (true) in
+            self.conductor.midiSignalReceived = false
         }
     }
     
