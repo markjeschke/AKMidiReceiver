@@ -12,6 +12,11 @@
 		17178CE2202150FA00163DC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17178CE0202150FA00163DC0 /* Main.storyboard */; };
 		17178CE4202150FA00163DC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17178CE3202150FA00163DC0 /* Assets.xcassets */; };
 		17178CE7202150FA00163DC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17178CE5202150FA00163DC0 /* LaunchScreen.storyboard */; };
+		17178CEF2021853900163DC0 /* Conductor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17178CEE2021853900163DC0 /* Conductor.swift */; };
+		17178CF3202188E700163DC0 /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 17178CF2202188E700163DC0 /* Sounds */; };
+		17178CF52022313800163DC0 /* SamplerAudioFileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17178CF42022313800163DC0 /* SamplerAudioFileLoader.swift */; };
+		173D44DF20227E480035D189 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 173D44DE20227E480035D189 /* AudioToolbox.framework */; };
+		6017805EE1E9578D6C7A70C8 /* Pods_AKMidiReceiver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FAB3FED353A3DC8AE06B240 /* Pods_AKMidiReceiver.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,14 @@
 		17178CE3202150FA00163DC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17178CE6202150FA00163DC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17178CE8202150FA00163DC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17178CEE2021853900163DC0 /* Conductor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conductor.swift; sourceTree = "<group>"; };
+		17178CF2202188E700163DC0 /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
+		17178CF42022313800163DC0 /* SamplerAudioFileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamplerAudioFileLoader.swift; sourceTree = "<group>"; };
+		173D44DD20227E480035D189 /* AKMidiReceiver.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AKMidiReceiver.entitlements; sourceTree = "<group>"; };
+		173D44DE20227E480035D189 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		5FAB3FED353A3DC8AE06B240 /* Pods_AKMidiReceiver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AKMidiReceiver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BD70432FD279FB6A40F27DC /* Pods-AKMidiReceiver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AKMidiReceiver.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AKMidiReceiver/Pods-AKMidiReceiver.debug.xcconfig"; sourceTree = "<group>"; };
+		D318BF2EBA049C2C11C1700B /* Pods-AKMidiReceiver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AKMidiReceiver.release.xcconfig"; path = "Pods/Target Support Files/Pods-AKMidiReceiver/Pods-AKMidiReceiver.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +42,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6017805EE1E9578D6C7A70C8 /* Pods_AKMidiReceiver.framework in Frameworks */,
+				173D44DF20227E480035D189 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +55,8 @@
 			children = (
 				17178CDB202150FA00163DC0 /* AKMidiReceiver */,
 				17178CDA202150FA00163DC0 /* Products */,
+				2E51E11696A6CE10CFF48252 /* Pods */,
+				BFFDDD9ED614704D362DBD5F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +71,36 @@
 		17178CDB202150FA00163DC0 /* AKMidiReceiver */ = {
 			isa = PBXGroup;
 			children = (
+				173D44DD20227E480035D189 /* AKMidiReceiver.entitlements */,
 				17178CDC202150FA00163DC0 /* AppDelegate.swift */,
+				17178CF42022313800163DC0 /* SamplerAudioFileLoader.swift */,
+				17178CEE2021853900163DC0 /* Conductor.swift */,
 				17178CDE202150FA00163DC0 /* ViewController.swift */,
 				17178CE0202150FA00163DC0 /* Main.storyboard */,
+				17178CF2202188E700163DC0 /* Sounds */,
 				17178CE3202150FA00163DC0 /* Assets.xcassets */,
 				17178CE5202150FA00163DC0 /* LaunchScreen.storyboard */,
 				17178CE8202150FA00163DC0 /* Info.plist */,
 			);
 			path = AKMidiReceiver;
+			sourceTree = "<group>";
+		};
+		2E51E11696A6CE10CFF48252 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6BD70432FD279FB6A40F27DC /* Pods-AKMidiReceiver.debug.xcconfig */,
+				D318BF2EBA049C2C11C1700B /* Pods-AKMidiReceiver.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BFFDDD9ED614704D362DBD5F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				173D44DE20227E480035D189 /* AudioToolbox.framework */,
+				5FAB3FED353A3DC8AE06B240 /* Pods_AKMidiReceiver.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +110,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 17178CEB202150FA00163DC0 /* Build configuration list for PBXNativeTarget "AKMidiReceiver" */;
 			buildPhases = (
+				0E1518E3181D038DF9D3CA7E /* [CP] Check Pods Manifest.lock */,
 				17178CD5202150FA00163DC0 /* Sources */,
 				17178CD6202150FA00163DC0 /* Frameworks */,
 				17178CD7202150FA00163DC0 /* Resources */,
+				E509DC1D3CE3A6DC793A0901 /* [CP] Embed Pods Frameworks */,
+				E95637BE1B0830A7C3E8C22B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -97,6 +139,14 @@
 					17178CD8202150FA00163DC0 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.InterAppAudio = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -125,11 +175,68 @@
 			files = (
 				17178CE7202150FA00163DC0 /* LaunchScreen.storyboard in Resources */,
 				17178CE4202150FA00163DC0 /* Assets.xcassets in Resources */,
+				17178CF3202188E700163DC0 /* Sounds in Resources */,
 				17178CE2202150FA00163DC0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0E1518E3181D038DF9D3CA7E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AKMidiReceiver-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E509DC1D3CE3A6DC793A0901 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AKMidiReceiver/Pods-AKMidiReceiver-frameworks.sh",
+				"${PODS_ROOT}/AudioKit/iOS/AudioKit.framework",
+				"${PODS_ROOT}/AudioKit/iOS/AudioKitUI.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AudioKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AudioKitUI.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AKMidiReceiver/Pods-AKMidiReceiver-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E95637BE1B0830A7C3E8C22B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AKMidiReceiver/Pods-AKMidiReceiver-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		17178CD5202150FA00163DC0 /* Sources */ = {
@@ -137,6 +244,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				17178CDF202150FA00163DC0 /* ViewController.swift in Sources */,
+				17178CEF2021853900163DC0 /* Conductor.swift in Sources */,
+				17178CF52022313800163DC0 /* SamplerAudioFileLoader.swift in Sources */,
 				17178CDD202150FA00163DC0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,8 +381,10 @@
 		};
 		17178CEC202150FA00163DC0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6BD70432FD279FB6A40F27DC /* Pods-AKMidiReceiver.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AKMidiReceiver/AKMidiReceiver.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D4Z52CBL7L;
 				INFOPLIST_FILE = AKMidiReceiver/Info.plist;
@@ -287,8 +398,10 @@
 		};
 		17178CED202150FA00163DC0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D318BF2EBA049C2C11C1700B /* Pods-AKMidiReceiver.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AKMidiReceiver/AKMidiReceiver.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D4Z52CBL7L;
 				INFOPLIST_FILE = AKMidiReceiver/Info.plist;
