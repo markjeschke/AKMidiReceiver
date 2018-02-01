@@ -7,7 +7,6 @@
 //
 
 import AudioKit
-import UIKit
 
 enum MidiEventType: String {
     case
