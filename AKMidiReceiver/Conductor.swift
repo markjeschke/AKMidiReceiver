@@ -110,9 +110,9 @@ class Conductor: AKMIDIListener {
         // If the controller value is less, then stop the note.
         // This creates an on/off type of "momentary" MIDI messaging.
         if value >= 127 {
-            playNote(note: 60 - controller, velocity: 80, channel: channel)
+            playNote(note: 30 + controller, velocity: 80, channel: channel)
         } else {
-            stopNote(note: 60 - controller, channel: channel)
+            stopNote(note: 30 + controller, channel: channel)
         }
         midiTypeReceived = .continuousControl
         outputMIDIMessage = "\(midiTypeReceived.rawValue)\nChannel: \(channel+1)  controller: \(controller)  value: \(value)"
