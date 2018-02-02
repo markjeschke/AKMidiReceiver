@@ -24,6 +24,13 @@ class ViewController: UIViewController {
         nc.addObserver(forName:NSNotification.Name(rawValue: "outputMessage"), object:nil, queue:nil, using:catchNotification)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        flashBackgroundColor()
+        midiSignalReceived = false
+        self.outputTextLabel.text = "Listening for MIDI events..."
+    }
+    
     @objc func catchNotification(notification:Notification) -> Void {
         guard
             let userInfo = notification.userInfo,
@@ -46,7 +53,7 @@ class ViewController: UIViewController {
             self.outputTextLabel.backgroundColor = UIColor.green
             self.view.backgroundColor = UIColor.lightGray
             if midiTypeReceived != .noteNumber {
-                dismissFlashBackgroundColor()
+                self.perform(#selector(dismissFlashBackgroundColor), with: nil, afterDelay: 0.5)
             }
         } else {
             dismissFlashBackgroundColor()
@@ -54,10 +61,10 @@ class ViewController: UIViewController {
     }
     
     @objc func dismissFlashBackgroundColor() {
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.5) {
             self.outputTextLabel.backgroundColor = UIColor.clear
             self.view.backgroundColor = UIColor.white
-        }) { (true) in
+            self.midiSignalReceived = false
             self.conductor.midiSignalReceived = false
         }
     }

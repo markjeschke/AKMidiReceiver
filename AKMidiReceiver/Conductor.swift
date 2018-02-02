@@ -44,7 +44,12 @@ class Conductor: AKMIDIListener {
             AKLog("Could not set session category.")
         }
         
-        demoSampler.loadEXS24Sample(filePath: "TX Metalimba")
+        // File path options are:
+        // "TX Brass"
+        // "TX LoTine81z"
+        // "TX Metalimba"
+        // "TX Pluck Bass"
+        demoSampler.loadEXS24Sample(filePath: "TX Brass")
         
         // If you wish to load a wav file, comment the `loadEXS24` method and uncomment this one:
 //      demoSampler.loadWavSample(filePath: "Kick") // Load Kick wav file
@@ -54,10 +59,12 @@ class Conductor: AKMIDIListener {
         AudioKit.start()
         
         // MIDI Configure
-        midi.createVirtualInputPort(98909, name: "MidiTrigger")
+        midi.createVirtualInputPort(98909, name: "AKMidiReceiver")
+        midi.createVirtualOutputPort(97789, name: "AKMidiReceiver")
         midi.openInput()
         midi.openOutput()
         midi.addListener(self)
+        
     }
     
     // Capture the MIDI Text within a DispatchQueue, so that it's on the main thread.
@@ -79,22 +86,22 @@ class Conductor: AKMIDIListener {
     
     // Note On Number + Velocity + MIDI Channel
     func receivedMIDINoteOn(noteNumber: MIDINoteNumber, velocity: MIDIVelocity, channel: MIDIChannel) {
-        playNote(note: noteNumber, velocity: velocity, channel: channel)
         midiTypeReceived = .noteNumber
         outputMIDIMessage = "\(midiTypeReceived.rawValue)\nChannel: \(channel+1)  noteOn: \(noteNumber)  velocity: \(velocity)"
         print(outputMIDIMessage)
         midiSignalReceived = true
         captureMIDIText()
+        playNote(note: noteNumber, velocity: velocity, channel: channel)
     }
     
     // Note Off Number + Velocity + MIDI Channel
-    func receivedMIDINoteOff(noteNumber: MIDINoteNumber, channel: MIDIChannel) {
-        stopNote(note: noteNumber, channel: channel)
+    func receivedMIDINoteOff(noteNumber: MIDINoteNumber, velocity: MIDIVelocity, channel: MIDIChannel) {
         midiTypeReceived = .noteNumber
-        outputMIDIMessage = "\(midiTypeReceived.rawValue)\nChannel: \(channel+1)  noteOff: \(noteNumber)"
+        outputMIDIMessage = "\(midiTypeReceived.rawValue)\nChannel: \(channel+1)  noteOff: \(noteNumber)  velocity: \(velocity)"
         print(outputMIDIMessage)
         midiSignalReceived = false
         captureMIDIText()
+        stopNote(note: noteNumber, channel: channel)
     }
     
     // Controller Number + Value + MIDI Channel
@@ -103,24 +110,36 @@ class Conductor: AKMIDIListener {
         // If the controller value is less, then stop the note.
         // This creates an on/off type of "momentary" MIDI messaging.
         if value >= 127 {
-            playNote(note: 60, velocity: 127, channel: channel + 1)
+            playNote(note: 60 - controller, velocity: 80, channel: channel)
         } else {
-            stopNote(note: 60, channel: channel + 1)
+            stopNote(note: 60 - controller, channel: channel)
         }
         midiTypeReceived = .continuousControl
         outputMIDIMessage = "\(midiTypeReceived.rawValue)\nChannel: \(channel+1)  controller: \(controller)  value: \(value)"
         midiSignalReceived = true
         captureMIDIText()
     }
-    
+
     // Program Change Number + MIDI Channel
     func receivedMIDIProgramChange(_ program: MIDIByte, channel: MIDIChannel) {
         // Trigger the `demoSampler` note and release it after half a second (0.5), since program changes don't have a note off release.
-        triggerSamplerNote(channel)
+        triggerSamplerNote(program, channel: channel)
         midiTypeReceived = .programChange
         outputMIDIMessage = "\(midiTypeReceived.rawValue)\nChannel: \(channel+1)  programChange: \(program)"
         midiSignalReceived = true
         captureMIDIText()
+    }
+    
+    func receivedMIDISetupChange() {
+        print("midi setup change")
+        print("midi.inputNames: \(midi.inputNames)")
+        
+        let listInputNames = midi.inputNames
+        
+        for inputNames in listInputNames {
+            print("inputNames: \(inputNames)")
+            midi.openInput(inputNames)
+        }
     }
     
     func playNote(note: MIDINoteNumber, velocity: MIDIVelocity, channel: MIDIChannel) {
@@ -131,11 +150,12 @@ class Conductor: AKMIDIListener {
         demoSampler.stop(noteNumber: note, channel: channel)
     }
     
-    func triggerSamplerNote(_ channel: MIDIChannel) {
-        playNote(note: 60, velocity: 127, channel: channel + 1)
+    func triggerSamplerNote(_ program: MIDIByte, channel: MIDIChannel) {
+        playNote(note: 60 + program, velocity: 80, channel: channel)
         let releaseNoteDelay = DispatchTime.now() + 0.5 // Change 0.5 to desired number of seconds
         DispatchQueue.main.asyncAfter(deadline: releaseNoteDelay) {
-            self.stopNote(note: 60, channel: channel + 1)
+            self.stopNote(note: 60 + program, channel: channel)
+            self.midiSignalReceived = false
         }
     }
 
