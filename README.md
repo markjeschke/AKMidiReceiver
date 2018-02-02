@@ -24,3 +24,12 @@ pod update
 ```
 Launch the `AKMidiReceiver.xcworkspace` – not the `AKMidiReceiver.xcodeproj`
 
+**No Scheme Found in the Xcode Workspace?** 
+
+If you open the Workspace and no scheme is found in the Xcode project, please follow these steps that were found [here](https://stackoverflow.com/questions/21755799/xcode-no-scheme):
+
+1. Click on No Scheme
+2. Click on Manage Scheme
+3. Click on Autocreate Schemes Now
+
+

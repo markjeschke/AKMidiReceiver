@@ -388,6 +388,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D4Z52CBL7L;
 				INFOPLIST_FILE = AKMidiReceiver/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.oogamedia.AKMidiReceiver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -405,6 +406,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D4Z52CBL7L;
 				INFOPLIST_FILE = AKMidiReceiver/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.oogamedia.AKMidiReceiver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
