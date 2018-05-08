@@ -28,6 +28,7 @@ class Conductor: AKMIDIListener {
     var outputMIDIMessage = ""
     var midiSignalReceived = false
     var midiTypeReceived: MidiEventType = .noteNumber
+    var reverb = AKReverb()
     
     init() {
         
@@ -54,9 +55,30 @@ class Conductor: AKMIDIListener {
         // If you wish to load a wav file, comment the `loadEXS24` method and uncomment this one:
 //      demoSampler.loadWavSample(filePath: "Kick") // Load Kick wav file
         
-        [demoSampler] >>> samplerMixer
+        [demoSampler] >>> reverb
+        reverb.dryWetMix = 0.5
+        reverb.loadFactoryPreset(.largeHall)
+        
+        /*
+        Preset options:
+        smallRoom
+        mediumRoom
+        largeRoom
+        mediumHall
+        largeHall
+        plate
+        mediumChamber
+        largeChamber
+        cathedral
+        largeRoom2
+        mediumHall2
+        mediumHall3
+        largeHall2
+        */
+        
+        reverb >>> samplerMixer
         AudioKit.output = samplerMixer
-        AudioKit.start()
+        try! AudioKit.start()
         
         // MIDI Configure
         midi.createVirtualInputPort(98909, name: "AKMidiReceiver")
@@ -142,12 +164,14 @@ class Conductor: AKMIDIListener {
         }
     }
     
+    // MARK: MIDI Trigger
+    
     func playNote(note: MIDINoteNumber, velocity: MIDIVelocity, channel: MIDIChannel) {
-        demoSampler.play(noteNumber: note, velocity: velocity, channel: channel)
+        try! demoSampler.play(noteNumber: note, velocity: velocity, channel: channel)
     }
     
     func stopNote(note: MIDINoteNumber, channel: MIDIChannel) {
-        demoSampler.stop(noteNumber: note, channel: channel)
+        try! demoSampler.stop(noteNumber: note, channel: channel)
     }
     
     func triggerSamplerNote(_ program: MIDIByte, channel: MIDIChannel) {
