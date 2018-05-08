@@ -17,7 +17,7 @@ cd <path/to/the/AKMidiReceiver repo>
 sudo gem install cocoapods
 ```
 
-**Step 2** - Install the AudioKit framework via CocoaPods
+**Step 2** - Install the AudioKit framework via CocoaPods *It is not included in the repo!*
 
 ```language-powerbash
 pod update
@@ -33,8 +33,8 @@ Launch the `AKMidiReceiver.xcworkspace` – not the `AKMidiReceiver.xcodeproj`
 
 If you open the Workspace and no scheme is found in the Xcode project, please follow these steps that were found [here](https://stackoverflow.com/questions/21755799/xcode-no-scheme):
 
-1. Click on No Scheme
-2. Click on Manage Scheme
-3. Click on Autocreate Schemes Now
+1. Click on the No Scheme pulldown menu.
+2. Click on the New Scheme... selection.
+3. Click "OK" when the `AKMidiReceiver` target and name appear in the confirmation box.
 
 
