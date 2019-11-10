@@ -40,7 +40,7 @@ class ViewController: UIViewController {
                 print("No userInfo found in notification")
                 return
         }
-        DispatchQueue.main.async(execute: {
+        DispatchQueue.main.async(execute: { [unowned self] in
             self.outputTextLabel.text = message
             self.midiSignalReceived = midiSignalReceived
             self.midiTypeReceived = midiTypeReceived
@@ -62,7 +62,7 @@ class ViewController: UIViewController {
     
     @objc func dismissFlashBackgroundColor() {
         UIView.animate(withDuration: 0.5) {
-            self.outputTextLabel.backgroundColor = UIColor.clear
+            self.outputTextLabel.backgroundColor = UIColor.white
             self.view.backgroundColor = UIColor.white
             self.midiSignalReceived = false
             self.conductor.midiSignalReceived = false

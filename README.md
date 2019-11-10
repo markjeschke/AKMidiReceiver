@@ -1,7 +1,7 @@
 # AKMidiReceiver
 Swift Xcode Project that demonstrates how to animate the backgroundColor of a UILabel when MIDI has been received from an external MIDI controller or a MIDI-enabled app. This also includes how to implement reverb effects into the audio signal. Made with the [AudioKit](http://audiokit.io/) framework.
 
-The EXS24 sounds are for demo purposes, only. They are borrowed from the incredible [ROM Player](https://github.com/AudioKit/ROMPlayer) by [Matthew Fetcher](https://github.com/analogcode).
+The EXS24 sounds are for demo purposes, only. They are borrowed from the incredible [ROM Player](https://github.com/AudioKit/ROMPlayer) by [Matthew Fecher](https://github.com/analogcode).
 
 ## Installation
 
@@ -27,7 +27,7 @@ Launch the `AKMidiReceiver.xcworkspace` – not the `AKMidiReceiver.xcodeproj`
 **Notes**
 
 * Minimum target is iOS 9.0. 
-* Updated with Xcode 9.3, but is compatible with Xcode 8.0 project document.
+* Updated with Xcode 11.2.1.
 
 **No Scheme Found in the Xcode Workspace?** 
 
